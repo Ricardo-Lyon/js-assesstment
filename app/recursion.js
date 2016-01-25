@@ -2,19 +2,23 @@ exports = (typeof window === 'undefined') ? global : window;
 
 exports.recursionAnswers = {
   listFiles: function(data, dirName) {
-    if(!this.files) this.files = [];
+    var files = [];
 
-    data.files.forEach( (item) => {
-      if (typeof item == 'string') {
-        if((typeof dirName === 'undefined' || data.dir === dirName)) {
-          this.files.push(item);
+    function finder(data, dirName, files) {
+      data.files.forEach( (item) => {
+        if (typeof item == 'string') {
+          if((typeof dirName === 'undefined' || data.dir === dirName)) {
+            files.push(item);
+          }
+        } else {
+          finder(item, dirName, files);
         }
-      } else {
-        this.listFiles(item, dirName);
-      }
-    });
+      });
+    }
 
-    return this.files;
+    finder(data, dirName, files);
+
+    return files;
   },
 
   permute: function(arr) {
