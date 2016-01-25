@@ -2,16 +2,11 @@ exports = (typeof window === 'undefined') ? global : window;
 
 exports.objectsAnswers =  {
   alterContext : function(fn, obj) {
-    this.name = obj.name;
-    this.greeting = obj.greeting;
-
-    this.sayIt = fn;
-
-    return this.sayIt.call(this);
+      return fn.call(obj);
   },
 
   alterObjects : function(constructor, greeting) {
-
+      return constructor.prototype.greeting = greeting;
   },
 
   iterate : function(obj) {
