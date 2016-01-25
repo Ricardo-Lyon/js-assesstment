@@ -22,7 +22,24 @@ exports.recursionAnswers = {
   },
 
   permute: function(arr) {
+  	if (arr.length == 0) return [[]];
 
+  	var result = [];
+
+  	arr.forEach((val, i) => {
+  		var copy = Object.create(arr);
+
+  		var head = copy.splice(i, 1);
+
+  		var rest = this.permute(copy);
+
+      rest.forEach((rv, ri) => {
+        var next = head.concat(rest[ri]);
+        result.push(next);
+      });
+    })
+
+  	return result;
   },
 
   fibonacci: function(n) {
