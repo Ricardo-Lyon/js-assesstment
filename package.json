@@ -16,7 +16,7 @@
     "chai": "^2.3.0",
     "expect.js": "0.1.2",
     "finalhandler": "^1.1.2",
-    "grunt": "^1.4.0",
+    "grunt": "^1.5.2",
     "grunt-contrib-connect": "^3.0.0",
     "grunt-contrib-jshint": "^3.0.0",
     "grunt-contrib-watch": "^1.1.0",
